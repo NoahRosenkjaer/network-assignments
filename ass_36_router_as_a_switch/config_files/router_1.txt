@@ -1,0 +1,58 @@
+version 12.1X46-D30.2;
+/* Two VLANS: SALES and OPERATIONS */
+/* By Per Dahlstroem */
+system {
+    host-name SRX240;
+    root-authentication {
+        /* User: root Password: Rootpass */
+        encrypted-password "$1$xH9xJoL6$MFOUYnZr4.Qj2NM24XInz/";
+    }
+}
+interfaces {
+    /* OPERATIONS */
+    ge-0/0/1 {
+        unit 0 {
+            family ethernet-switching {
+                vlan {
+                    members OPERATIONS;
+                }
+            }
+        }
+    }
+    ge-0/0/2 {
+        unit 0 {
+            family ethernet-switching {
+                vlan {
+                    members OPERATIONS;
+                }
+            }
+        }
+    }
+    /* SALES */
+    ge-0/0/3 {
+        unit 0 {
+            family ethernet-switching {
+                vlan {
+                    members SALES;
+                }
+            }
+        }
+    }
+    ge-0/0/4 {
+        unit 0 {
+            family ethernet-switching {
+                vlan {
+                    members SALES;
+                }
+            }
+        }
+    }
+}
+vlans {
+    OPERATIONS {
+        vlan-id 20;
+    }
+    SALES {
+        vlan-id 10;
+    }
+}
